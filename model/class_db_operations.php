@@ -1,5 +1,5 @@
 <?php
-require('/connect.php');
+require('connect.php');
 
 
 final class db_operations{
@@ -192,18 +192,109 @@ final class db_operations{
 														<td colspan='2'> Date $date</td>
 													</tr>";
 							}
+                            public static function show_patient_info(){
+                                Global $pdo;
+                                $sql = " select * from temp_patient where id = 1";
+								$stmt = $pdo->prepare($sql);
+								$stmt->execute();
+								while($obj = $stmt->fetchObject()){
+								$id = $obj->id;
+								$name = $obj->name;
+								$age= $obj->age;
+								$agetype= $obj->agetype;
+								$sex= $obj->sex;
+								$phone= $obj->phone;
+								}
+								
+											    echo"
+                                                <table width='794px' border='0' cellpadding='5px' cellspacing='0'>
+                                                    <tr style='width:794px;'>
+                                                        <td colspan='3'>Name : $name </td>
+												        <td colspan='2'>Age  : $age $agetype</td>
+												        <td colspan='2'>Sex  : $sex</td>
+                                                    </tr>
+                                                    <tr style='width:794px;'>
+                                                        <td colspan='3'>phone : $phone </td>
+														<td colspan='2'> Date : $date</td>
+														<td colspan='2'> Patient ID : $id</td>
+                                                        <td></td>
+                                                    </tr>
+                                                </table>
+                                                ";
+                            }
+                            public static function show_medicine(){
+                            	Global $pdo;
+                                $sql = " select * from temp_medicine";
+								$stmt = $pdo->prepare($sql);
+								$stmt->execute();
+								while($obj = $stmt->fetchObject()){
+									$sl=$obj->sl;
+									$type=$obj->type;
+									$name=$obj->name;
+									$instruction_time=$obj->instruction_time;
+									$instruction=$obj->instruction;
+									$period=$obj->period;
+									$period_type=$obj->period_type;
+									$remark=$obj->remark;
+									
+								
+								echo"
+									<tr>
+				                       <td>$sl.</td>
+				                       <td>$type - $name </td>
+				                       <td>$instruction_time-$instruction</td>
+				                       <td>$period$period_type</td>
+				                       <td>$remark</td>
+				                   </tr>
+								";
+								}
+                            }
 							
-							public static function show_cc(){
-									Global $pdo;	
-								$sql = " select * from temp_patient where id = 1";
+							public static function show_c_c(){
+								Global $pdo;	
+								$sql = " select c_c from temp_test where id = 1";
 								$stmt = $pdo->prepare($sql);
 								$stmt->execute();
 								while($obj = $stmt->fetchObject()){
 								
-								$cc =$obj->cc;}
-								echo"<td>$cc</td>";
+								$cc =$obj->c_c;}
+								echo"$cc";
 								
 								
+							}
+							public static function show_o_e(){
+								Global $pdo;	
+								$sql = " select o_e from temp_test where id = 1";
+								$stmt = $pdo->prepare($sql);
+								$stmt->execute();
+								while($obj = $stmt->fetchObject()){
+								
+								$oe =$obj->o_e;}
+								echo"$oe";
+								
+								
+							}
+							public static function show_adv(){
+								Global $pdo;	
+								$sql = " select adv from temp_test where id = 1";
+								$stmt = $pdo->prepare($sql);
+								$stmt->execute();
+								while($obj = $stmt->fetchObject()){
+								
+								$adv =$obj->adv;}
+								echo"$adv";
+								
+								
+							}
+							public static function show_appointment_date(){
+								Global $pdo;	
+								$sql = " select next_appointment from temp_patient where id = 1";
+								$stmt = $pdo->prepare($sql);
+								$stmt->execute();
+								while($obj = $stmt->fetchObject()){
+								
+								$date =$obj->next_appointment;}
+								echo"$date";
 							}
 							public static function show_temp_info(){
 											Global $pdo;	
@@ -216,14 +307,14 @@ final class db_operations{
 								$quantity= $obj->quantity_id;
 								$hvt= $obj->having_time_id;
 							    $type = $obj->type;
-								echo"     <tr align='left'>
-                                <td align='left'>$type &nbsp;&nbsp;</td>
-                                <td align='left'>$test_mdeicin</td>
-								<td align='left'>$quantity</td>
-                                <td align='left' width='14%'> $period</td>
-                                <td align='left' width='25%'>$hvt</td>
-                                
-                            </tr>";
+								echo"     
+                                        <tr align='left'>
+                                             <td align='left'>$type &nbsp;&nbsp;</td>
+                                             <td align='left'>$test_mdeicin</td>
+                                             <td align='left'>$quantity</td>
+                                             <td align='left' width='14%'> $period</td>
+                                             <td align='left' width='25%'>$hvt</td>
+                                        </tr>";
 							}
 							}
 							public static function show_profile(){
@@ -243,41 +334,49 @@ final class db_operations{
 								
 							}
 							echo"
-								 <td colspan='3' align='left'>
-                              <table  border='0' cellpadding='0' cellspacing='0'>
-                            <tr>
-                                <td>$name</td>
-                            </tr>
-                            <tr>
-                                <td>$degree</td>
-                            </tr>
-							<tr>
-                                <td>designation:$dsgntn</td>
-                            </tr>
-							<tr>
-                                <td>$institution</td>
-                            </tr>
-                            <tr>
-                                <td>Phone : $contact</td>
-                            </tr>
-                            <tr>
-                                <td>Email : $mail</td>
-                            </tr>
-                            
-                        </table>
-                    </td>
-                    <td rowspan='5' colspan='2'><pre>                                   </pre></td>
-                    <td colspan='2'>
-                        <table  border='0' cellpadding='0' cellspacing='0'>
-                            <tr>
-                                <td><u>Chamber Address : </u></td>
-                            </tr>
-                            <tr>
-                                <td><address>$address</address></td>
-                            </tr>
-							
-							";
-							}
+                                    <table border='0' cellpadding='0' cellspacing='0'>
+                                        <tr>
+                                            <td>$name</td>
+                                        </tr>
+                                        <tr>
+                                            <td>$degree</td>
+                                        </tr>
+                                        <tr>
+                                            <td>designation:$dsgntn</td>
+                                        </tr>
+                                        <tr>
+                                            <td>$institution</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phone : $contact</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email : $mail</td>
+                                        </tr>
+
+                                    </table>
+                                        ";
+                            }
+                            public static function show_address(){
+								Global $pdo;	
+								$sql = " select address from doctor_profile where id = 1";
+								$stmt = $pdo->prepare($sql);
+								$stmt->execute();
+                                $obj = $stmt->fetchObject();
+								$address = $obj->address;
+							echo"
+                                    <table border='0' cellpadding='0' cellspacing='0'>
+                                        <tr>
+                                            <td><u>Chamber Address : </u></td>
+                                        </tr>
+                                        <tr>
+                                            <td><address>$address</address></td>
+                                        </tr>
+
+                                    </table>
+                                        ";
+                            }
+                     
 							public static function show_full_temp(){
 								Global $pdo;	
 								$sql = "select * from temp_patient inner join temp_info on temp_patient.id = temp_info.id";

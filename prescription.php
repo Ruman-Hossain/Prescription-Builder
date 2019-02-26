@@ -33,13 +33,13 @@ $(function(){
 					<ol class="breadcrumb">
 						<li><i class="fa fa-angle-double-right"></i><a href="prescribe.php">&nbsp; Home</a></li>
 						<li style="color:#1a1a1a;">
-                        <?php /*
+                        <?php 
                             $active = explode("_",$_GET['active']);
 							
 							foreach($active as $name){
 								echo ucfirst($name);
 								echo " ";
-							}*/
+							}
                         ?>
                         </li>						  	
 					</ol>

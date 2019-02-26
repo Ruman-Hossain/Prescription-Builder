@@ -2,12 +2,12 @@
 require_once("model/class_db_operations.php");
 require_once("model/connect.php");
 
-$mysql = mysql_connect("localhost", "root", "");
+$mysql = mysqli_connect("localhost", "root", "","prescription");
 
-if(mysql_select_db('prescription', $mysql)){
+if(mysqli_select_db($mysql,'prescription')){
 	
 	$stmt = new db_operations();
-	$stmt->insert_admin("hasin","hasin");
+	$stmt->insert_admin("ruman","ruman");
 	//db_operations::insert_am_table("ffff","fffff","fffff","sfjisjis");
 	
     echo "";

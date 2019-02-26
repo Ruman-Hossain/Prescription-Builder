@@ -1,6 +1,6 @@
 <?php
 require_once("model/class_db_operations.php");
-require_once("/check.php");
+require_once("check.php");
 require_once("model/connect.php");
   final class data_validation{
 	  

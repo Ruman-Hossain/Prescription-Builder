@@ -1,6 +1,6 @@
 <?php
 	require_once("Model/connect.php");
-	require_once("/check.php");
+	require_once("check.php");
 	
 	final class check_admin {
 	
@@ -26,16 +26,17 @@
 						$_SESSION['id'] = $id;
 						if(isset($_SESSION['name']) && isset($_SESSION['id'])){
 						
+						echo "Login Successfull.";
+						header("Location:/prescription/prescribe.php");
 					
-						header("Location:/prescription-master/prescribe.php");
+					}
+					else{
+						echo "Wrong Password. Try again.";
+						header("Location:/prescription/index.php");
+						
+					}
 					
+			}
 	}
-	else{
-		header("Location:/index.php");
-		
-	}
-					
-	}
-	}
-	}
+}
 ?>
