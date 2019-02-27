@@ -55,269 +55,111 @@ if(!$_SESSION['id']){
 <style>
     .active + .collapse {display:block!important;}
 </style>
-<script>
-$(function(){
-	var countLIActive = $('li a.t').length;
-	if ( $('.displayDetails').children().length > 0 ) {
-		$('#demotab').hide();
- 
-    }
-	if(countLIActive > 0){
-		var activePN = $('li.active a.t').html();
-		var activeM = $('li.active span.m').html();
-		$('#patientName').val(activePN);
-		if(activeM != '-'){
-			$('#mobile').val(activeM);
-		}else{
-			$('#mobile').val('');
-		}
-		$('#searchTest').focus();
-	}else{
-        $('#patientName').val('');
-        $('#mobile').val('');
-    }
-	
-	$("#searchTest").typeahead({
-		source:function(query, process){
-			$('.loading_test').css('display','');
-			$.getJSON('search_test.php?query='+query, function(data){
-				process(data);
-				$('.loading_test').css('display','none');
-			});
-		},
-		updater: function(item){
-			var testKey;
-			testKey = item.replace('&', '%26');
-			var patientName = $('#patientName').val();
-			var mobileCheck = $('#mobile').val();
-			var mobile;
-			if(mobileCheck.length > 0){
-				mobile = mobileCheck;
-			}else{
-				mobile = '-';
-			}
-
-			if(patientName.length > 0){
-				$('.loading_test').css('display','');
-				$.get('cart_process.php?testKey='+testKey+'&patientName='+patientName+'&mobile='+mobile, function(data){
-					$('#demotab').hide();
-					$('.displayDetails').html(data);
-					$('.loading_test').css('display','none');
-				});
-			}else{
-				alert('Patient name must be field out.');
-			}
-			
-		}
-	});
-	
-	$(".discountPerTest").change(function(){
-		var value = this.value;
-		var id = this.id;
-		//alert(value);
-		$('.loading_test').css('display','');
-		$.get('discount_process.php?id='+id+'&value='+value, function(data){
-			$('.displayDetails').html(data);
-			$('.loading_test').css('display','none');
-		});
-	});
-	
-});
-
-function active(patientName, mobile){
-		
-	$('#patientName').val(patientName);
-	if(mobile != '-'){
-		$('#mobile').val(mobile);
-	}else{
-		$('#mobile').val('');
-	}
-	$('#enterMedicine').focus();
-}
-
-function confirmInvoice(index){
-
-	var sex = $('input[name="sex_'+index+'"]').is(':checked');
-	var sexValue = $('input[name="sex_'+index+'"]:checked').val();
-	var age = $('input[name="age_'+index+'"]').val();
-	var ageType = $('select[name="ageType_'+index+'"]').val();
-
-	if(sex == false){
-		alert("Please Select Petient's sex Male or Female or Others");
-		return false;
-	}
-
-	if(age == ''){
-		alert("Please Enter Petient's age");
-		return false;
-	}
-	
-	var conf = confirm('Are you sure want to Confirm this?');
-	if(conf){
-		var c_c = $('input[name="c_c'+index+'"]').val();
-		var o_e = $('input[name="o_e'+index+'"]').val();
-		var totalDisP = $('input[name="totalDisP_'+index+'"]').val();
-		var totalAmount = $('input[name="totalAmount_'+index+'"]').val();
-		var discountP = $('input[name="discountP_'+index+'"]').val();
-		var discountAmount = $('input[name="discountAmount_'+index+'"]').val();
-		var netTotal = $('input[name="netTotal_'+index+'"]').val();
-		var payment = $('input[name="payment_'+index+'"]').val();
-		var due = $('input[name="due_'+index+'"]').val();
-		var totalRefdFee = $('input[name="totalRefdFee_'+index+'"]').val();
-		var deli_time = $('textarea[name="deli_time_'+index+'"]').val();
-
-		
-		//alert('CN-'+coName+'RN-'+refdName+'TA-'+totalAmount+'DP-'+discountP+'DA-'+discountAmount+'P-'+payment);
-		
-		
-		var myBars = 'directories=no,location=no,menubar=yes,status=no';
-		
-		myBars += ',titlebar=yes,toolbar=no';
-		
-		var myOptions = 'scrollbars=no,width=750,height=500,resizeable=no,top=10, left=300,';
-		var myFeatures = myBars + ',' + myOptions;
-		
-		refdName = refdName.replace("&","%26");
-		
-		var win = window.open('confirm_invoice.php?index='+index+'&sex='+sexValue+'&age='+age+'&ageType='+ageType+'&c_c='+c_c+'&o_e='+o_e+'&totalDisP='+totalDisP+'&totalAmount='+totalAmount+'&discountP='+discountP+'&discountAmount='+discountAmount+'&netTotal='+netTotal+'&payment='+payment+'&due='+due+'&totalRefdFee='+totalRefdFee+'&deli_time='+deli_time, 'myDoc', myFeatures);
-		
-		var timer = setInterval(function() {   
-			if(win.closed) {  
-				clearInterval(timer);  
-				$.post('remove_cart2.php?index='+index, function(data){
-					$('.displayDetails').html(data);
-				});	
-			}  
-		}, 1000); 
-
-		return true;
-		
-	}else{
-		return false;
-	}
-	
-
-}
-
-function removeOne(index){
-	var conf = confirm('Are you sure want to remove this?');
-	//alert(index);
-	
-	if(conf){
-		$.post('remove_cart.php?index='+index, function(data){
-			$('.displayDetails').html(data);
-		});	
-		return true;
-	}else{
-		return false;
-	}
-}
-function cancelInvoice(index){
-	var conf = confirm('Are you sure want to cancel this?');
-	
-	if(conf){
-		$.post('remove_cart2.php?index='+index, function(data){
-			$('.displayDetails').html(data);
-		});	
-		return true;
-	}else{
-		return false;
-	}
-}
+<script type="text/javascript">
+function addField (argument) {
+            var myTable = document.getElementById("medTable");
+            var currentIndex = myTable.rows.length;
+            var currentRow = myTable.insertRow(-1);
 
 
-function discountVal(index){
+            var sl = document.createElement("input");
+            sl.setAttribute("type","text");
+            sl.setAttribute("name", "sl" + currentIndex);
+            sl.setAttribute("class","input-control");
+            sl.setAttribute("placeholder","SL No.");
+            sl.setAttribute("autocomplete","off");
+            sl.setAttribute("style","width:100%;");
+            sl.setAttribute("id","entersl"+currentIndex);
 
-	var setIndex = index.split('/');
-	var firstIndex = setIndex[0];
-	var secondIndex = setIndex[1];
+            var medtype = document.createElement("input");
+            medtype.setAttribute("type","text");
+            medtype.setAttribute("name", "medtype" + currentIndex);
+            medtype.setAttribute("class","input-control");
+            medtype.setAttribute("placeholder","Ex:Syrap/Tablet/Injection/Capsule");
+            medtype.setAttribute("autocomplete","off");
+            medtype.setAttribute("style","width:100%;");
+            medtype.setAttribute("id","enterMedicine"+currentIndex);
 
-	var zero = 0;
-	var value = document.getElementById('discountAmount_'+index).value;
-	var totalAmount = document.getElementById('totalAmount_'+index).value;
-	var payment = document.getElementById('payment_'+index).value;
+            var medname = document.createElement("input");
+            medname.setAttribute("type","text");
+            medname.setAttribute("name", "medname" + currentIndex);
+            medname.setAttribute("class","input-control");
+            medname.setAttribute("placeholder","Enter Medicine Name");
+            medname.setAttribute("autocomplete","off");
+            medname.setAttribute("style","width:100%;");
+            medname.setAttribute("id","enterMedicine"+currentIndex);
 
-	var dis;
-	if(value.length > 0){
-		dis = parseFloat(value);
-	}else{
-		dis = parseFloat(zero);
-		document.getElementById('discountAmount_'+index).value = zero.toFixed(2);
-		document.getElementById('discountAmount_'+index).select();
-	}
+            var daytimes = document.createElement("input");
+            daytimes.setAttribute("type","text");
+            daytimes.setAttribute("name", "daytimes" + currentIndex);
+            daytimes.setAttribute("class","input-control");
+            daytimes.setAttribute("placeholder","Ex:1+1+1");
+            daytimes.setAttribute("autocomplete","off");
+            daytimes.setAttribute("style","width:100%;");
+            daytimes.setAttribute("id","enterDayTimes"+currentIndex);
 
-	var calDiscountPer = (parseFloat(100) * parseFloat(dis)) / parseFloat(totalAmount);
-	var calTotalAmount = parseFloat(totalAmount) - parseFloat(dis);
-	calTotalAmount = Math.ceil(calTotalAmount);
-	document.getElementById('discountP_'+index).value = calDiscountPer.toFixed(2);
-	document.getElementById('netTotal_'+index).value = calTotalAmount.toFixed(2);
-	var calDueAmount = calTotalAmount - parseFloat(payment);
-	document.getElementById('due_'+index).value = calDueAmount.toFixed(2);
+            var instruction = document.createElement("input");
+            instruction.setAttribute("type","text");
+			instruction.setAttribute("name", "instruction" + currentIndex);
+			instruction.setAttribute("class","input-control");
+			instruction.setAttribute("placeholder","Ex:Before/After Eating");
+			instruction.setAttribute("autocomplete","off");
+			instruction.setAttribute("style","width:100%;");
+			instruction.setAttribute("id","enterinstruction"+currentIndex);
 
+            var period = document.createElement("input");
+            period.setAttribute("type","text");
+			period.setAttribute("name", "period" + currentIndex);
+			period.setAttribute("class","input-control");
+			period.setAttribute("placeholder","Ex:30");
+			period.setAttribute("autocomplete","off");
+			period.setAttribute("style","width:100%;");
+			period.setAttribute("id","enterperiod"+currentIndex);
 
-	$.ajax({
-		type: 'POST',
-		url: 'set_cookie_discount.php',
-		data: 'firstIndex='+firstIndex+'&secondIndex='+secondIndex+'&discountP='+calDiscountPer.toFixed(2)+'&discountVal='+dis.toFixed(2),
-		success:function(data){
-			
-		}
-	});
+            var periodType = document.createElement("input");
+            periodType.setAttribute("type","text");
+			periodType.setAttribute("name", "periodType" + currentIndex);
+			periodType.setAttribute("class","input-control");
+			periodType.setAttribute("placeholder","Day/Month/Year/Continuous");
+			periodType.setAttribute("autocomplete","off");
+			periodType.setAttribute("style","width:100%;");
+			periodType.setAttribute("id","enterperiodType"+currentIndex);
 
-}
+            var remark = document.createElement("input");
+            remark.setAttribute("type","text");
+			remark.setAttribute("name", "remark" + currentIndex);
+			remark.setAttribute("class","input-control");
+			remark.setAttribute("placeholder","Ex:If There's Headache Problem");
+			remark.setAttribute("autocomplete","off");
+			remark.setAttribute("style","width:100%;");
+			remark.setAttribute("id","enterremark"+currentIndex);
 
 
 
-function function_sex(index, sex){
+            var currentCell = currentRow.insertCell(-1);
+            currentCell.appendChild(sl);
 
-	var setIndex = index.split('/');
-	var firstIndex = setIndex[0];
-	var secondIndex = setIndex[1];
-	var invoiceType = $('input[name="invoiceType_'+index+'"]').val();
-	
-	$.ajax({
-		type: 'POST',
-		url: 'set_cookie_sex.php',
-		data: 'firstIndex='+firstIndex+'&secondIndex='+secondIndex+'&sex='+sex+'&invoiceType='+invoiceType,
-		success:function(data){
+            var currentCell = currentRow.insertCell(-1);
+            currentCell.appendChild(medtype);
 
-		}
-	});
-}
+            currentCell = currentRow.insertCell(-1);
+            currentCell.appendChild(medname);
 
-function function_age(index, age){
+            currentCell = currentRow.insertCell(-1);
+            currentCell.appendChild(daytimes);
 
-	var setIndex = index.split('/');
-	var firstIndex = setIndex[0];
-	var secondIndex = setIndex[1];
-	var ageType = $('select[name="ageType_'+index+'"]').val();
-	
-	$.ajax({
-		type: 'POST',
-		url: 'set_cookie_age.php',
-		data: 'firstIndex='+firstIndex+'&secondIndex='+secondIndex+'&age='+age+'&ageType='+ageType,
-		success:function(data){
+            currentCell = currentRow.insertCell(-1);
+            currentCell.appendChild(instruction);
 
-		}
-	});
-}
+            currentCell = currentRow.insertCell(-1);
+            currentCell.appendChild(period);
 
-function function_ageType(index, ageType){
+            currentCell = currentRow.insertCell(-1);
+            currentCell.appendChild(periodType);
 
-	var setIndex = index.split('/');
-	var firstIndex = setIndex[0];
-	var secondIndex = setIndex[1];
-
-	$.ajax({
-		type: 'POST',
-		url: 'set_cookie_age_type.php',
-		data: 'firstIndex='+firstIndex+'&secondIndex='+secondIndex+'&ageType='+ageType,
-		success:function(data){
-
-		}
-	});
-
-}
+            currentCell = currentRow.insertCell(-1);
+            currentCell.appendChild(remark);
+ }
 </script>
 </head>
 

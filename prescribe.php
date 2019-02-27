@@ -20,7 +20,7 @@ require_once('include/header.php');
                 </li>
             </ol>
         </div>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " style="margin:0;padding:0;">
+<!--         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " style="margin:0;padding:0;">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="margin-bottom:2px">
                     <div class="input-group">
@@ -50,7 +50,7 @@ require_once('include/header.php');
                 </div>
             </div>
         </div>
-
+ -->
 
         <div id="demotab" class="tab-content ">
 
@@ -73,7 +73,10 @@ require_once('include/header.php');
                                             <div class="row">
                                                 <input type="hidden" name="invoiceType_" id="invoiceType_" value="">
                                                 <div class="row-div">
-                                                    <p> <span>Name of Patient: </span> </p>
+                                                    <p>
+                                                        <span>Name of Patient: </span>
+                                                        <input type="text" class="input-control" placeholder="Patient Name" id="patientName" style="color:#000" name="patientName" value="" autoComplete="off">
+                                                    </p>
 
                                                     <p>
                                                         <span>Sex : </span>
@@ -104,7 +107,10 @@ require_once('include/header.php');
                                                         </select>
 
                                                     </p>
-                                                    <p><span>Contact No:</span> </p>
+                                                    <p>
+                                                        <span>Contact No:</span>
+                                                         <input type="text" class="input-control" placeholder="Phone Number" id="mobile" style="color:#000" name="mobile" value="" autoComplete="off">
+                                                    </p>
                                                 </div>
                                                 <div class="row">
 
@@ -147,33 +153,45 @@ require_once('include/header.php');
                         <div class="panel-body">
                             <div class="padd">
                                 <div class="form">
-                                    <table border="0" width="100%" style="color:#333">
+                                    <table id="medTable" border="0" align="center" width="100%" style="color:#333">
                                         <tr>
-                                            <td width="6%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double">&times;</td>
-                                            <td width="8%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double">Sl No.</td>
+                                           <!-- <td width="4%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double">&times;</td> -->
+                                            <td width="5%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double">Sl No.</td>
+                                            <td width="10%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double">Type</td>
                                             <td width="26%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double">Medicine Name</td>
-                                            <td width="10%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double">Instruction Time</td>
-                                            <td width="15%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double">Instruction</td>
+                                            <td width="10%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double">Day Times</td>
+                                            <td width="10%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double">Instruction</td>
                                             <td width="10%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double">Period</td>
+                                            <td width="10%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double">Period Type</td>
                                             <td width="25%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double;">Remarks</td>
                                         </tr>
 
-                                        <tr>
-                                            <td width="6%" align="center" style="padding:2px; border-bottom:1px solid"><a onclick="return removeOne('')" href="#" class="removebtn">&times;</a></td>
-                                            <td width="8%" align="center" style="padding:2px; border-bottom:1px solid"></td>
-                                            <td width="26%" align="center" width="55%" style="padding:2px; border-bottom:1px solid"></td>
+                                        <!-- <tr>
+                                            <td width="4%" align="center" style="padding:2px; border-bottom:1px solid"><a onclick="return removeOne('')" href="#" class="removebtn">&times;</a></td>
+                                            <td width="5%" align="center" style="padding:2px; border-bottom:1px solid"></td>
                                             <td width="10%" align="center" style="padding:2px; border-bottom:1px solid">
-                                                <input type="text" style="width:90%; text-align: center; padding: 3px" name="" id="" class="input-control " value="">
+                                                <select name="medType" id="medType" class="input-control" style="padding:4px 4px; margin:0; width:80%; ">
+                                                    <option value="Tablet">Tablet</option>
+                                                    <option value="Capsule">Capsule</option>
+                                                    <option value="Syrap">Syrap</option>
+                                                    <option value="Injection">Injection</option>
+                                                </select>
                                             </td>
-                                            <td width="15%" align="center" style="padding:2px; border-bottom:1px solid">
-                                                <select name="instruction" id="instruction" class="input-control" style="padding: 4px 0px;margin: 0; width: 90%;">
+                                            <td width="26%" align="center" width="55%" style="padding:2px; border-bottom:1px solid">
+                                                <input type="text" style="width:100%;" class="input-control" placeholder="Enter Medicine Name" id="enterMedicine" value="" autoComplete="off">
+                                            </td>
+                                            <td width="10%" align="center" style="padding:2px; border-bottom:1px solid">
+                                                <input type="text" style="width:100%; text-align: center; padding: 3px" name="" id="" class="input-control " value="">
+                                            </td>
+                                            <td width="10%" align="center" style="padding:2px; border-bottom:1px solid">
+                                                <select name="instruction" id="instruction" class="input-control" style="padding:3px 0px;margin: 0; width: 100%;">
                                                     <option value="beforeEating">Before Eating</option>
                                                     <option value="afterEating">After Eating</option>
                                                 </select>
                                             </td>
                                             <td width="10%" align="center" style="padding:2px; border-bottom:1px solid">
                                                 <input type="text" style="width:38%; text-align: center; padding: 3px" name="" id="" class="input-control " value="">
-                                                <select name="periodFormat" id="periodFormat" class="input-control" style="padding: 4px 0px;margin: 0; width: 48%;">
+                                                <select name="periodFormat" id="periodFormat" class="input-control" style="padding: 4px 0px;margin: 0; width: 50%;">
                                                     <option value="days">Days</option>
                                                     <option value="months">Months</option>
                                                     <option value="years">Years</option>
@@ -182,11 +200,14 @@ require_once('include/header.php');
                                             </td>
 
                                             <td width="25%" align="center" style="padding:2px; border-bottom:1px solid">
-                                                <input type="text" style="width:90%; text-align: center; padding: 3px" name="" id="" class="input-control ">
+                                                <input type="text" style="width:100%; text-align: center; padding: 3px" name="" id="" class="input-control ">
                                             </td>
-                                        </tr>
+                                        </tr> -->
 
                                     </table>
+                                    <div class="col-lg-12" style="padding-top:20px; margin-top:10px;" align="center">
+                                        <button class="btn btn-success" onclick="addField();">Add A New Medicine Row</button>
+                                    </div>
                                 </div>
                             </div><br>
 
@@ -200,8 +221,8 @@ require_once('include/header.php');
                             </div>
 
                             <div class="col-lg-12" style="padding-top:20px; margin-top:10px;" align="center">
-                                <button class="btn btn-danger" onclick="return cancelInvoice('')">Cancel</button>
-                                <button class="btn btn-primary" onclick="return confirmInvoice('')">Confirm</button>
+                                <input type="button" class="btn btn-danger" value="Cancel">
+                                <input type="button" class="btn btn-primary" value="Confirm">
                             </div>
                         </div>
                     </div>
