@@ -255,6 +255,18 @@
 	$('#user_form').on('submit', function(event){
 		event.preventDefault();
 		var count_data = 0;
+		
+		//Patient info and test input given or not used variables
+		
+		/*var patientName = document.getElementById("patientName").value;
+		var phone = document.getElementById("phone").value;
+		var sex = document.getElementById("sex").value;
+		var age = document.getElementById("age").value;
+		var agetype = document.getElementById("agetype").value;
+		var nextappointment = document.getElementById("nextappointment").value;
+		*/
+		//Patient info and test input given or not ended
+		
 		$('.medtype').each(function(){
 			count_data = count_data + 1;
 		});
@@ -275,7 +287,7 @@
 		}
 		else
 		{
-			$('#action_alert').html('<p>Please Fill All the Input Fields</p>');
+			$('#action_alert').html('<p>Please Fill Out All the Input Fields</p>');
 			$('#action_alert').dialog('open');
 		}
 	});

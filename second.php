@@ -38,7 +38,7 @@ require_once('include/header.php');
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom:2px">
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="row-div">
+                                                <div class="row-div" id="patient">
                                                     <p>
                                                         <span>Name of Patient: </span>
                                                         <input type="text" class="input-control" placeholder="Patient Name" id="patientName" style="color:#000" name="patientName" value="" autoComplete="off">
@@ -66,7 +66,7 @@ require_once('include/header.php');
                                                         <input type="text" class="input-control" style="width: 50%; text-align: center; padding: 4px 0px; height:30px !important;;" placeholder="Age" id="age" name="age" autoComplete="off" value="">
 
 
-                                                        <select name="agetype_" id="agetype_" class="input-control" style="padding: 4px 0px;margin: 0; width: 48%;">
+                                                        <select name="agetype" id="agetype" class="input-control" style="padding: 4px 0px;margin: 0; width: 48%;">
                                                             <option value="Years">Years</option>
                                                             <option value="Months">Months</option>
                                                             <option value="Days">Days</option>
@@ -75,7 +75,7 @@ require_once('include/header.php');
                                                     </p>
                                                     <p>
                                                         <span>Contact No:</span>
-                                                        <input type="text" class="input-control" placeholder="Phone Number" id="mobile" style="color:#000" name="mobile" value="" autoComplete="off">
+                                                        <input type="text" class="input-control" placeholder="Phone Number" id="phone" style="color:#000" name="phone" value="" autoComplete="off">
                                                     </p>
                                                 </div>
 
@@ -133,7 +133,7 @@ require_once('include/header.php');
                                 <button type="button" name="add" id="add" class="btn btn-success btn-xs">Add</button>
                             </div>
                             <br />
-                            <form method="post" id="user_form">
+                            <form method="post" action="invoice.php" id="user_form">
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered" id="user_data">
                                         <tr>
@@ -149,9 +149,9 @@ require_once('include/header.php');
                                         </tr>
                                     </table>
                                 </div>
-                    <div align="center">
-                        <input type="submit" name="insert" id="insert" class="btn btn-primary" value="Prescribe" />
-                    </div>
+								<div align="center">
+									<input type="submit" name="insert" id="insert" class="btn btn-primary" value="Prescribe" />
+								</div>
                             </form>
 
                             <br />
