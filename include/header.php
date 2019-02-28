@@ -13,7 +13,6 @@ if(!$_SESSION['id']){
 
 <!doctype html>
 <html lang="en">
-
 <head>
 	<title>Prescription Builder</title>
 	<meta charset="utf-8">
@@ -36,16 +35,7 @@ if(!$_SESSION['id']){
 
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
-	
-	
-
 <!--	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>-->
-	
-	
-	
-	
-
-
 	<!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
 	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
 	<script src="js/jquery.dataTables.min.js"></script>
@@ -56,7 +46,7 @@ if(!$_SESSION['id']){
     .active + .collapse {display:block!important;}
 </style>
 <script type="text/javascript">
-function addField (argument) {
+		function addField (argument) {
             var myTable = document.getElementById("medTable");
             var currentIndex = myTable.rows.length;
             var currentRow = myTable.insertRow(-1);
@@ -160,38 +150,6 @@ function addField (argument) {
             currentCell.appendChild(remark);
  }
 
-
-
- 	  $('#action_alert').dialog({
-		  autoOpen:false
-		});
-
-	 $(document).ready(function(){ 
-		 	$('#confirm').click(function(){
-		  	   	var count_data = 0;
-		        $('.medtype').each(function(){
-		        	count_data = count_data + 1;
-		         });
-			  if(count_data > 0){
-			  	var form_data = $(this).serialize();
-			    $.ajax({
-				    url:"insert.php",
-				    method:"POST",
-				    data:form_data,
-				    success:function(data){
-					     $('#medTable').find("tr:gt(0)").remove();
-					     $('#action_alert').html('<p>Data Inserted Successfully</p>');
-					     $('#action_alert').dialog('open');
-					    
-				    }
-			   })
-			  }
-		  else{
-		   $('#action_alert').html('<p>Please Add atleast one data</p>');
-		   $('#action_alert').dialog('open');
-		  }
-	 });
- });
 </script>
 </head>
 
@@ -251,7 +209,7 @@ function addField (argument) {
 		                      </a>
 		                  </li> -->
 						  <li >
-		                      <a  <?php if(isset($_GET['active']) && ($_GET['active'] == 'prescribe')){ echo 'class="active"';} ?> href="prescribe.php?active=prescribe">
+		                      <a  <?php if(isset($_GET['active']) && ($_GET['active'] == 'temp')){ echo 'class="active"';} ?> href="temp.php?active=temp">
 		                         <i class="fa fa-medkit"></i>
 		                          <!--<i class="fa fa-id-card-o" aria-hidden="true"></i>-->
 		                          <span>Make Prescription</span>

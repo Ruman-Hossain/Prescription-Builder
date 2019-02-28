@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 26, 2019 at 12:49 PM
+-- Generation Time: Feb 28, 2019 at 10:31 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -73,13 +73,12 @@ INSERT INTO `doctor_profile` (`id`, `name`, `designation`, `phone`, `mail`, `add
 
 CREATE TABLE `temp_medicine` (
   `id` int(11) UNSIGNED NOT NULL,
-  `sl` int(11) NOT NULL,
-  `type` varchar(50) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `instruction_time` varchar(50) NOT NULL,
+  `medtype` varchar(50) NOT NULL,
+  `medname` varchar(100) NOT NULL,
+  `daytimes` varchar(50) NOT NULL,
   `instruction` varchar(100) NOT NULL,
   `period` int(11) NOT NULL,
-  `period_type` varchar(20) NOT NULL,
+  `periodtype` varchar(20) NOT NULL,
   `remark` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -87,9 +86,16 @@ CREATE TABLE `temp_medicine` (
 -- Dumping data for table `temp_medicine`
 --
 
-INSERT INTO `temp_medicine` (`id`, `sl`, `type`, `name`, `instruction_time`, `instruction`, `period`, `period_type`, `remark`) VALUES
-(1, 1, 'capsule', 'Omeraprazole', '111', 'Before Eating', 30, 'days', 'If Gastric problem Occurs'),
-(2, 2, 'Tablet', 'Paracitamol', '101', 'After Eating', 15, 'Days', 'If Headache occurs');
+INSERT INTO `temp_medicine` (`id`, `medtype`, `medname`, `daytimes`, `instruction`, `period`, `periodtype`, `remark`) VALUES
+(1, '4', '5', '55', '5', 5, '5', '5'),
+(2, '4', '5', '5', '5', 55, '5', '5'),
+(3, '5', '5', '5', '5', 5, '5', '5'),
+(4, '5', '5', '5', '5', 5, '5', 'ruman'),
+(5, 'wergh1', '1', '1', '1', 11, '11', '1'),
+(6, 'ddddddddd', 'ddddddddddd', '1', '1', 11, '11', '1'),
+(7, '1234', '2345', '134567', '1234567', 1123456, '1123456', '123456'),
+(8, '12', '2222222222222222222222222222222', '134567', '1234567', 1123456, '1123456', '123456'),
+(9, '8522', '585', '85', '8', 5, '5', '5');
 
 -- --------------------------------------------------------
 
@@ -102,16 +108,16 @@ CREATE TABLE `temp_patient` (
   `name` varchar(100) NOT NULL,
   `phone` varchar(50) NOT NULL,
   `age` int(11) NOT NULL,
-  `age_type` varchar(20) NOT NULL,
+  `agetype` varchar(20) NOT NULL,
   `sex` varchar(20) NOT NULL,
-  `next_appointment` datetime NOT NULL
+  `nextappointment` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `temp_patient`
 --
 
-INSERT INTO `temp_patient` (`id`, `name`, `phone`, `age`, `age_type`, `sex`, `next_appointment`) VALUES
+INSERT INTO `temp_patient` (`id`, `name`, `phone`, `age`, `agetype`, `sex`, `nextappointment`) VALUES
 (1, 'ruman', '01723974489', 24, 'years', 'male', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
@@ -188,13 +194,13 @@ ALTER TABLE `doctor_profile`
 -- AUTO_INCREMENT for table `temp_medicine`
 --
 ALTER TABLE `temp_medicine`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `temp_patient`
 --
 ALTER TABLE `temp_patient`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `temp_test`

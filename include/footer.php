@@ -1,6 +1,7 @@
-</div>
-</div>
-<div class="clearfix"></div>
+			</div>
+		</div>
+	<div class="clearfix">
+	</div>
 <footer>
     <div class="container-fluid">
         <i>developed by bits</i>
@@ -35,7 +36,8 @@
 
 	$('#user_dialog').dialog({
 		autoOpen:false,
-		width:400
+		width:500,
+		height:450
 	});
 
 	$('#add').click(function(){
@@ -258,19 +260,24 @@
 		
 		//Patient info and test input given or not used variables
 		
-		/*var patientName = document.getElementById("patientName").value;
-		var phone = document.getElementById("phone").value;
-		var sex = document.getElementById("sex").value;
-		var age = document.getElementById("age").value;
-		var agetype = document.getElementById("agetype").value;
-		var nextappointment = document.getElementById("nextappointment").value;
-		*/
+		var patientName = $('input[name=patientName]').val();
+		var phone = $('input[name=phone]').val();
+		var sex = $('input[name=sex]').val();
+		var age = $('input[name=age]').val();
+		var agetype = $('input[name=agetype]').val();
+		var nextappointment = $('input[name=nextappointment]').val();
+		
+		var c_c= $('input[name=c_c]').val();
+		var o_e= $('input[name=o_e]').val();
+		var adv= $('input[name=adv]').val();
+		
+		
 		//Patient info and test input given or not ended
 		
 		$('.medtype').each(function(){
 			count_data = count_data + 1;
 		});
-		if(count_data > 0)
+		if(count_data > 0 && patientName && phone && age && nextappointment)
 		{
 			var form_data = $(this).serialize();
 			$.ajax({
@@ -297,7 +304,7 @@
 		
 		
     });
-    function printDiv(divName) {
+function printDiv(divName){
      var printContents = document.getElementById(divName).innerHTML;
      var originalContents = document.body.innerHTML;
 
@@ -307,7 +314,5 @@
 
      document.body.innerHTML = originalContents;
 }
-
-
 
 </script>

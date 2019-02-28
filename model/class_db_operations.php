@@ -3,6 +3,8 @@ require('connect.php');
 
 
 final class db_operations{
+	
+	
 	//inserting admin for the very first time when first time page will be loaded
 	   public static  function insert_admin($name,$pass){
 	  // require_once("/connect.php");
@@ -30,6 +32,11 @@ final class db_operations{
 		   //echo "ase to ";
 	   }
    }
+	public static function truncate_table(){
+		$sql="DELETE * FROM temp_medicine";
+		$stmt = $pdo->prepare($sql);
+		$stmt->execute();
+	}
     public static function insert_medicine($name,$prep,$company){
 		 Global $pdo;
 		 

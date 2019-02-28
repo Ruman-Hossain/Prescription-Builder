@@ -160,39 +160,39 @@ require_once('include/header.php');
         </div>
 
         <div id="user_dialog" title="Add Data">
-            <div class="form-group">
-                <label>Type</label>
-                <input type="text" name="medtype" id="medtype" class="form-control" />
+            <div class="form-group" style="height:50px;">
+                <label style="width:20%;float:left;"><b>Type</b></label>
+                <input type="text" name="medtype" id="medtype" placeholder="Tablet/Syrap/Capsule/Injection" style="width:80%;float:right;" class="form-control" />
                 <span id="error_medtype" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label>Name</label>
-                <input type="text" name="medname" id="medname" class="form-control" />
+            <div class="form-group" style="height:50px;">
+                <label style="width:20%;float:left;"><b>Name</b></label>
+                <input type="text" name="medname" id="medname" placeholder="Ex: Paracitamol 50mg" style="width:80%;float:right;" class="form-control" />
                 <span id="error_medname" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label>Day Times</label>
-                <input type="text" name="daytimes" id="daytimes" class="form-control" />
+            <div class="form-group" style="height:50px;">
+                <span style="width:20%;"><b>Day Times</b></span>
+                <input type="text" name="daytimes" id="daytimes" placeholder="Ex: 1+0+1" style="width:80%;float:right;" class="form-control" />
                 <span id="error_daytimes" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label>Instruction</label>
-                <input type="text" name="instruction" id="instruction" class="form-control" />
+            <div class="form-group" style="height:50px;">
+                <span style="width:20%;"><b>Instruction</b></span>
+                <input type="text" name="instruction" id="instruction" placeholder="Before/After Eating" style="width:80%;float:right;" class="form-control" />
                 <span id="error_instruction" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label>Period</label>
-                <input type="text" name="period" id="period" class="form-control" />
+            <div class="form-group" style="height:50px;">
+                <span style="width:20%;"><b>Period</b></span>
+                <input type="text" name="period" id="period" placeholder="Ex: 30" style="width:80%;float:right;" class="form-control" />
                 <span id="error_period" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label>Period Type</label>
-                <input type="text" name="periodtype" id="periodtype" class="form-control" />
+            <div class="form-group" style="height:50px;">
+                <span style="width:20%;"><b>Period Type</b></span>
+                <input type="text" name="periodtype" id="periodtype" placeholder="Days/Months/Years/Continuous" style="width:80%;float:right;" class="form-control" />
                 <span id="error_periodtype" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label>Remark</label>
-                <input type="text" name="remark" id="remark" class="form-control" />
+            <div class="form-group" style="height:50px;">
+                <span style="width:20%;"><b>Remark</b></span>
+                <input type="text" name="remark" id="remark" placeholder="Ex: If Headache Occurs" style="width:80%;float:right;" class="form-control" />
                 <span id="error_remark" class="text-danger"></span>
             </div>
 
