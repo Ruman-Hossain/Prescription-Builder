@@ -4,7 +4,7 @@
     error_reporting(0);
 ?>
 <!-- <center><button onclick="printDiv('printable-area')" id="print_btn" align="center" style="padding:5px 15px; font-weight:bold">Print</button></center> -->
-    <center width="794px;"><input type="button" onclick="printDiv('printableArea')" value="Print" /></center>
+    <center width="794px;"><input type="button" class="btn btn-primary" onclick="printDiv('printableArea')" value="Print" /></center>
         <div id="printableArea" style="border:double;overflow:hidden;width:1200px; margin:5px;">
             <div style="width:100%;padding-left: 15px;">
                 <h2 style="width:100; text-align: center;">Popular Diagnostic Centre Rangpur</h2>
@@ -26,27 +26,27 @@
             </div>
             <div style="height:717px;width:100%;margin-bottom:5px;float: left;">
                 <div style="height:723px;width:20%;clear:both; float:left;border-right:dotted; overflow: hidden;">
-                    <div style="height:230px;width:100%;margin-bottom:5px;padding: 5%; overflow: hidden;">
+                    <div style="height:230px;width:100%;margin-bottom:5px;padding: 5%;border-bottom:dotted; overflow: hidden;">
                         <h3><u>C/C</u></h3>
                         <p><?php db_operations::show_c_c(); ?></p>
                     </div>
-                    <div style="height:230px;width:100%;margin-bottom:5px;padding: 5%; overflow: hidden;">
+                    <div style="height:230px;width:100%;margin-bottom:5px;border-bottom:dotted;padding: 5%; overflow: hidden;">
                         <h3><u>O/E</u></h3>
                         <p><?php db_operations::show_o_e(); ?></p>
                     </div>
-                    <div style="height:231px;width:100%;padding: 5%; overflow: hidden;">
+                    <div style="height:231px;width:100%;padding: 5%;overflow: hidden;">
                         <h3><u>ADV</u></h3>
                         <p><?php db_operations::show_adv(); ?></p>
                     </div>
                 </div>
-                <div style="height:702px;width:80%; float:left; overflow: hidden;">
-                    <table border="0" style="width:100%;" cellpadding="2px" cellspacing="2px">
+                <div style="height:702px;width:80%; padding:0% 5%;float:left; overflow: hidden;">
+                    <table border="0" style="width:100%;font-size:14px;" cellpadding="2px" cellspacing="2px">
                        <tr width="100%" style="border-bottom:double;">
-                           <th><h3>SL</h3></th>
-                           <th><h3>Medicine</h3> </th>
-                           <th><h3>Instruction</h3></th>
-                           <th><h3>Period</h3></th>
-                           <th><h3>Remark</h3></th>
+                           <th style="border-right:dotted;text-align: center;"><h3>SL</h3></th>
+                           <th style="border-right:dotted;text-align: center;"><h3>Medicine</h3> </th>
+                           <th style="border-right:dotted;text-align: center;"><h3>Instruction</h3></th>
+                           <th style="border-right:dotted;text-align: center;"><h3>Period</h3></th>
+                           <th style="text-align: center;"><h3>Remark</h3></th>
                        </tr>
                        <tr><td colspan="5"><hr/></td></tr>
                           <?php db_operations::show_medicine(); ?>

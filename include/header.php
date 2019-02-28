@@ -166,7 +166,7 @@ if(!$_SESSION['id']){
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="prescribe.php"><h3>Prescribe </h3><!--<img style="height:55px;" src="assets/img/race-logo.jpg" alt="Race Diagnostic Centre Logo" class="img-responsive logo">--></a>
+				<a href="temp.php?active=temp"><h3>Prescribe </h3><!--<img style="height:55px;" src="assets/img/race-logo.jpg" alt="Race Diagnostic Centre Logo" class="img-responsive logo">--></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
@@ -223,7 +223,7 @@ if(!$_SESSION['id']){
 		                      </a>
 		                  </li>
 		                  <li >
-		                      <a  <?php if(isset($_GET['active']) && ($_GET['active'] == 'prescription')){ echo 'class="active"';} ?> href="prescription.php?active=prescription">
+		                      <a  <?php if(isset($_GET['active']) && ($_GET['active'] == 'invoice')){ echo 'class="active"';} ?> href="invoice.php?active=invoice">
 		                         <i class="fa fa-search"></i>
 		                          <!--<i class="fa fa-id-card-o" aria-hidden="true"></i>-->
 		                          <span>Search Prescription</span>

@@ -91,7 +91,7 @@ final class db_operations{
 				}
    
 					//for storing temporary patient info
-			      public static function update_temp_patient($patientName,$phone,$age,$agetype,$sex,$nextappointment){
+			      public static function update_temp_patient_info($patientName,$phone,$sex,$age,$agetype,$nextappointment){
 				  Global $pdo;
 	  
 	   
@@ -105,6 +105,18 @@ final class db_operations{
 				$stmt->bindParam(':sex',$sex,PDO::PARAM_STR);
 				$stmt->bindParam(':nextappointment',$nextappointment,PDO::PARAM_STR);
 				
+				$stmt->execute();
+	   
+   }
+  	 public static function update_temp_test_info($c_c,$o_e,$adv){
+				Global $pdo;
+	   
+				$sql = "UPDATE  temp_test SET c_c =:c_c,o_e=:o_e,adv=:adv WHERE id =1";
+			
+				$stmt = $pdo->prepare($sql);
+				$stmt->bindParam(':c_c',$c_c,PDO::PARAM_STR);
+				$stmt->bindParam(':o_e',$o_e,PDO::PARAM_STR);
+				$stmt->bindParam(':adv',$adv,PDO::PARAM_INT);
 				$stmt->execute();
 	   
    }
@@ -246,11 +258,11 @@ final class db_operations{
 								
 								echo"
 									<tr>
-				                       <td>$id.</td>
-				                       <td>$medtype - $medname </td>
-				                       <td>$daytimes-$instruction</td>
-				                       <td>$period$periodtype</td>
-				                       <td>$remark</td>
+				                       <td style='padding-left:2%;'>$id.</td>
+				                       <td style='padding-left:2%;'>$medtype - $medname </td>
+				                       <td style='padding-left:2%;'>$daytimes-$instruction</td>
+				                       <td style='padding-left:2%;'>$period$periodtype</td>
+				                       <td style='padding-left:2%;'>$remark</td>
 				                   </tr>
 								";
 								}
@@ -264,7 +276,7 @@ final class db_operations{
 								while($obj = $stmt->fetchObject()){
 								
 								$cc =$obj->c_c;}
-								echo"$cc";
+								echo"<pre style='border:none'>$cc</pre>";
 								
 								
 							}
@@ -276,7 +288,7 @@ final class db_operations{
 								while($obj = $stmt->fetchObject()){
 								
 								$oe =$obj->o_e;}
-								echo"$oe";
+								echo"<pre style='border:none'>$oe</pre>";
 								
 								
 							}
@@ -288,7 +300,7 @@ final class db_operations{
 								while($obj = $stmt->fetchObject()){
 								
 								$adv =$obj->adv;}
-								echo"$adv";
+								echo"<pre style='border:none'>$adv</pre>";
 								
 								
 							}

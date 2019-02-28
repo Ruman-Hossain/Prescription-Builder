@@ -24,7 +24,7 @@ require_once('include/header.php');
 
             <div id="" class="tab-pane  " style="display:block;">
                 <!-- Start Tab left inner -->
-                <form method="post" id="user_form">
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" id="user_form">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -41,21 +41,21 @@ require_once('include/header.php');
                                                 <div class="row-div" id="patient">
                                                     <p>
                                                         <span>Name of Patient: </span>
-                                                        <input type="text" class="input-control" placeholder="Patient Name" id="patientName" style="color:#000" name="patientName" value="" autoComplete="off">
+                                                        <input type="text" class="input-control" placeholder="Patient Name" id="patientName" style="color:#000" name="patientName" value="" autoComplete="off" required>
                                                     </p>
 
                                                     <p>
                                                         <span>Sex : </span>
-                                                        <label>
-                                                            <input type="radio" name="sex_" id="male" value="Male">
+                                                        <label required>
+                                                            <input type="radio" name="sex" id="male" value="Male">
                                                             Male
 
 
-                                                            <input type="radio" name="sex_" id="female" value="Female">
+                                                            <input type="radio" name="sex" id="female" value="Female">
                                                             Female
 
 
-                                                            <input type="radio" name="sex_" id="others" value="Others">
+                                                            <input type="radio" name="sex" id="others" value="Others">
                                                             Others
 
                                                         </label>
@@ -63,7 +63,7 @@ require_once('include/header.php');
                                                     <p>
                                                         <span style="">Age :</span>
 
-                                                        <input type="text" class="input-control" style="width: 50%; text-align: center; padding: 4px 0px; height:30px !important;;" placeholder="Age" id="age" name="age" autoComplete="off" value="">
+                                                        <input type="text" class="input-control" style="width: 50%; text-align: center; padding: 4px 0px; height:30px !important;;" placeholder="Age" id="age" name="age" autoComplete="off" value="" required>
 
 
                                                         <select name="agetype" id="agetype" class="input-control" style="padding: 4px 0px;margin: 0; width: 48%;">
@@ -75,7 +75,7 @@ require_once('include/header.php');
                                                     </p>
                                                     <p>
                                                         <span>Contact No:</span>
-                                                        <input type="text" class="input-control" placeholder="Phone Number" id="phone" style="color:#000" name="phone" value="" autoComplete="off">
+                                                        <input type="text" class="input-control" placeholder="Phone Number" id="phone" style="color:#000" name="phone" value="" autoComplete="off" required>
                                                     </p>
                                                 </div>
 
@@ -100,15 +100,15 @@ require_once('include/header.php');
                             <div class="panel-body">
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="padding-bottom: 7px">
                                     <span class="input-group-addon" style="background-color:#083603;color:#fff;">C/C</span>
-                                    <textarea type="text" class="input-control" placeholder="C/C Goes Here..." name="cc_" id="c_c" autoComplete="off" value=""></textarea>
+                                    <textarea type="text" class="input-control" placeholder="C/C Goes Here..." name="cc_" id="c_c" autoComplete="off" value="" required></textarea>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <span class="input-group-addon" style="background-color:#083603;color:#fff;">O/E</span>
-                                    <textarea type="text" class="input-control" placeholder="O/E Goes Here..." name="o_e" id="o_e" autoComplete="off" value=""></textarea>
+                                    <textarea type="text" class="input-control" placeholder="O/E Goes Here..." name="o_e" id="o_e" autoComplete="off" value="" required></textarea>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="padding-bottom: 7px">
                                     <span class="input-group-addon" style="background-color:#083603;color:#fff;">ADV</span>
-                                    <textarea type="text" class="input-control" placeholder="ADV Goes Here..." name="adv" id="adv" autoComplete="off" value=""></textarea>
+                                    <textarea type="text" class="input-control" placeholder="ADV Goes Here..." name="adv" id="adv" autoComplete="off" value="" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +122,7 @@ require_once('include/header.php');
                             <div class="panel-body">
                                 <div class="input-group" style="display:block;box-shadow:none; margin-bottom:10px;">
                                     <span class="" style="margin:10px; text-align: center; float:left;"><b>Next Appointment Date</b></span>
-                                    <input type="datetime-local" style="margin:0;width:30%; float:left;" name="nextappointment" id="nextappointment">
+                                    <input type="datetime-local" style="margin:0;width:30%; float:left;" name="nextappointment" id="nextappointment" required>
                                 </div>
                                 <div align="right" style="margin-bottom:5px;">
                                     <button type="button" name="add" id="add" class="btn btn-success btn-xs">Add</button>
@@ -147,6 +147,34 @@ require_once('include/header.php');
                                     <div align="center">
                                         <input type="submit" name="insert" id="insert" class="btn btn-primary" value="Prescribe" />
                                     </div>
+
+                                        <?php
+                                        require_once("model/class_db_operations.php");
+                                        require_once("controller/check.php");
+                                        
+                                        
+                                        
+                                        
+                                            if(isset($_POST['insert'])){
+                                                if(isset($_POST['patientName'])&& $_POST['phone'] && $_POST['sex'] && $_POST['age'] &&  $_POST['agetype'] && $_POST['nextappointment']){
+                                                        $_POST['patientName'] = check_input::test_input($_POST['patientName']);
+                                                        $_POST['phone'] = check_input::test_input($_POST['phone']);
+                                                        $_POST['sex'] = check_input::test_input($_POST['sex']);
+                                                        $_POST['age'] = check_input::test_input($_POST['age']);
+                                                        $_POST['agetype'] = check_input::test_input($_POST['agetype']);
+                                                        $_POST['nextappointment'] = check_input::test_input($_POST['nextappointment']);
+                                                        $_POST['c_c'] = check_input::test_input($_POST['c_c']);
+                                                        $_POST['o_e'] = check_input::test_input($_POST['o_e']);
+                                                        $_POST['adv'] = check_input::test_input($_POST['adv']);
+                                                    db_operations::update_patient_info( $_POST['patientName'], $_POST['phone'], $_POST['sex'], $_POST['age'], $_POST['agetype'], $_POST['nextappointment']);
+                                                    db_operations::update_test_info( $_POST['c_c'], $_POST['o_e'], $_POST['adv']);
+                                                }
+                                                echo 'Failed to Insert Data. Try again';
+                                            
+                                        
+                                        }
+                                    
+                                        ?>
                                 </div>
 
                                 <br />
@@ -206,6 +234,7 @@ require_once('include/header.php');
         </div>
     </section>
 </section>
+
 <?php
 require_once('include/footer.php');
 
