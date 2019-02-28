@@ -32,6 +32,9 @@ if(!$_SESSION['id']){
 	<script src="assets/vendor/jquery/jquery.min.js"></script>
 	<link href="css/jquery-ui-1.10.4.min.css" rel="stylesheet">
     <script src="js/jquery-ui-1.10.4.min.js"></script>
+	
+	
+	
 
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
@@ -41,6 +44,10 @@ if(!$_SESSION['id']){
 	<script src="js/jquery.dataTables.min.js"></script>
 	<script src="js/dataTables.bootstrap.min.js"></script>	 
 	<script src="js/bootstrap.js"></script>
+	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	
 <style>
     .active + .collapse {display:block!important;}
