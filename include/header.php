@@ -63,13 +63,12 @@ function addField (argument) {
 
 
             var sl = document.createElement("input");
-            sl.setAttribute("type","text");
+            sl.setAttribute("type","button");
             sl.setAttribute("name", "sl" + currentIndex);
-            sl.setAttribute("class","input-control");
-            sl.setAttribute("placeholder","SL No.");
-            sl.setAttribute("autocomplete","off");
+            sl.setAttribute("value","Remove");
+            sl.setAttribute("class","input-control btn btn-danger");
             sl.setAttribute("style","width:100%;");
-            sl.setAttribute("id","entersl"+currentIndex);
+            sl.setAttribute("id","sl"+currentIndex);
 
             var medtype = document.createElement("input");
             medtype.setAttribute("type","text");
@@ -78,7 +77,7 @@ function addField (argument) {
             medtype.setAttribute("placeholder","Ex:Syrap/Tablet/Injection/Capsule");
             medtype.setAttribute("autocomplete","off");
             medtype.setAttribute("style","width:100%;");
-            medtype.setAttribute("id","enterMedicine"+currentIndex);
+            medtype.setAttribute("id","medtype"+currentIndex);
 
             var medname = document.createElement("input");
             medname.setAttribute("type","text");
@@ -87,7 +86,7 @@ function addField (argument) {
             medname.setAttribute("placeholder","Enter Medicine Name");
             medname.setAttribute("autocomplete","off");
             medname.setAttribute("style","width:100%;");
-            medname.setAttribute("id","enterMedicine"+currentIndex);
+            medname.setAttribute("id","medname"+currentIndex);
 
             var daytimes = document.createElement("input");
             daytimes.setAttribute("type","text");
@@ -96,7 +95,7 @@ function addField (argument) {
             daytimes.setAttribute("placeholder","Ex:1+1+1");
             daytimes.setAttribute("autocomplete","off");
             daytimes.setAttribute("style","width:100%;");
-            daytimes.setAttribute("id","enterDayTimes"+currentIndex);
+            daytimes.setAttribute("id","daytimes"+currentIndex);
 
             var instruction = document.createElement("input");
             instruction.setAttribute("type","text");
@@ -105,7 +104,7 @@ function addField (argument) {
 			instruction.setAttribute("placeholder","Ex:Before/After Eating");
 			instruction.setAttribute("autocomplete","off");
 			instruction.setAttribute("style","width:100%;");
-			instruction.setAttribute("id","enterinstruction"+currentIndex);
+			instruction.setAttribute("id","instruction"+currentIndex);
 
             var period = document.createElement("input");
             period.setAttribute("type","text");
@@ -114,16 +113,16 @@ function addField (argument) {
 			period.setAttribute("placeholder","Ex:30");
 			period.setAttribute("autocomplete","off");
 			period.setAttribute("style","width:100%;");
-			period.setAttribute("id","enterperiod"+currentIndex);
+			period.setAttribute("id","period"+currentIndex);
 
             var periodType = document.createElement("input");
             periodType.setAttribute("type","text");
-			periodType.setAttribute("name", "periodType" + currentIndex);
+			periodType.setAttribute("name", "periodtype" + currentIndex);
 			periodType.setAttribute("class","input-control");
 			periodType.setAttribute("placeholder","Day/Month/Year/Continuous");
 			periodType.setAttribute("autocomplete","off");
 			periodType.setAttribute("style","width:100%;");
-			periodType.setAttribute("id","enterperiodType"+currentIndex);
+			periodType.setAttribute("id","periodtype"+currentIndex);
 
             var remark = document.createElement("input");
             remark.setAttribute("type","text");
@@ -132,7 +131,7 @@ function addField (argument) {
 			remark.setAttribute("placeholder","Ex:If There's Headache Problem");
 			remark.setAttribute("autocomplete","off");
 			remark.setAttribute("style","width:100%;");
-			remark.setAttribute("id","enterremark"+currentIndex);
+			remark.setAttribute("id","remark"+currentIndex);
 
 
 
@@ -160,6 +159,39 @@ function addField (argument) {
             currentCell = currentRow.insertCell(-1);
             currentCell.appendChild(remark);
  }
+
+
+
+ 	  $('#action_alert').dialog({
+		  autoOpen:false
+		});
+
+	 $(document).ready(function(){ 
+		 	$('#confirm').click(function(){
+		  	   	var count_data = 0;
+		        $('.medtype').each(function(){
+		        	count_data = count_data + 1;
+		         });
+			  if(count_data > 0){
+			  	var form_data = $(this).serialize();
+			    $.ajax({
+				    url:"insert.php",
+				    method:"POST",
+				    data:form_data,
+				    success:function(data){
+					     $('#medTable').find("tr:gt(0)").remove();
+					     $('#action_alert').html('<p>Data Inserted Successfully</p>');
+					     $('#action_alert').dialog('open');
+					    
+				    }
+			   })
+			  }
+		  else{
+		   $('#action_alert').html('<p>Please Add atleast one data</p>');
+		   $('#action_alert').dialog('open');
+		  }
+	 });
+ });
 </script>
 </head>
 

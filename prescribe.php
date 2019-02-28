@@ -51,7 +51,6 @@ require_once('include/header.php');
             </div>
         </div>
  -->
-
         <div id="demotab" class="tab-content ">
 
             <div id="" class="tab-pane  " style="display:block;">
@@ -156,7 +155,7 @@ require_once('include/header.php');
                                     <table id="medTable" border="0" align="center" width="100%" style="color:#333">
                                         <tr>
                                            <!-- <td width="4%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double">&times;</td> -->
-                                            <td width="5%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double">Sl No.</td>
+                                            <td width="5%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double"></td>
                                             <td width="10%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double">Type</td>
                                             <td width="26%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double">Medicine Name</td>
                                             <td width="10%" align="center" style="font-weight:bold; padding:2px; border-bottom:4px double">Day Times</td>
@@ -206,7 +205,7 @@ require_once('include/header.php');
 
                                     </table>
                                     <div class="col-lg-12" style="padding-top:20px; margin-top:10px;" align="center">
-                                        <button class="btn btn-success" onclick="addField();">Add A New Medicine Row</button>
+                                        <button class="btn btn-success" id="newrow" name="newrow" onclick="addField();">Add A New Medicine Row</button>
                                     </div>
                                 </div>
                             </div><br>
@@ -221,8 +220,8 @@ require_once('include/header.php');
                             </div>
 
                             <div class="col-lg-12" style="padding-top:20px; margin-top:10px;" align="center">
-                                <input type="button" class="btn btn-danger" value="Cancel">
-                                <input type="button" class="btn btn-primary" value="Confirm">
+                                <input type="button" class="btn btn-danger" id="cancel" name="cancel" value="Cancel">
+                                <input type="button" class="btn btn-primary" id="confirm" name="confirm" value="Confirm">
                             </div>
                         </div>
                     </div>
@@ -230,7 +229,8 @@ require_once('include/header.php');
                 </div>
                 <!-- End Tab left inner -->
             </div>
-
+        </div>
+         <div id="action_alert" title="Action"></div>
     </section>
 </section>
 

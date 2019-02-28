@@ -56,7 +56,7 @@
                     </table>
                 </div>
             </div>
-            <div style="height:50px;width:794px; clear:both;">
+            <div style="height:50px;width:794px; clear:both;overflow: hidden;">
                 <div style="width:395px;height:53px;background-color:magenta; margin-right:5px;padding: 15px; float:left;">Next Appointment Date :
                     <?php db_operations::show_appointment_date(); ?>
                 </div>

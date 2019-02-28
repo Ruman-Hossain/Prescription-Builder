@@ -84,20 +84,19 @@ final class db_operations{
 				}
    
 					//for storing temporary patient info
-			      public static function update_temp_patient($name,$age,$agetype,$sex,$phone,$date,$cc){
+			      public static function update_temp_patient($patientName,$phone,$age,$agetype,$sex,$nextappointment){
 				  Global $pdo;
 	  
 	   
-				$sql = "UPDATE  temp_patient SET name =:name,age=:age,agetype=:agetype,sex=:sex,phone=:phone,date=:date,cc=:cc WHERE id =1";
+				$sql = "UPDATE  temp_patient SET name =:patientName,phone=:phone,age=:age,agetype=:agetype,sex=:sex,nextappointment=:nextappointment WHERE id =1";
 			
 				$stmt = $pdo->prepare($sql);
-				$stmt->bindParam(':name',$name,PDO::PARAM_STR);
+				$stmt->bindParam(':patientName',$patientName,PDO::PARAM_STR);
+				$stmt->bindParam(':phone',$phone,PDO::PARAM_STR);
 				$stmt->bindParam(':age',$age,PDO::PARAM_INT);
 				$stmt->bindParam(':agetype',$agetype,PDO::PARAM_STR);
 				$stmt->bindParam(':sex',$sex,PDO::PARAM_STR);
-				$stmt->bindParam(':phone',$phone,PDO::PARAM_STR);
-				$stmt->bindParam(':date',$date,PDO::PARAM_STR);
-				$stmt->bindParam(':cc',$cc,PDO::PARAM_STR);
+				$stmt->bindParam(':nextappointment',$nextappointment,PDO::PARAM_STR);
 				
 				$stmt->execute();
 	   
@@ -228,22 +227,22 @@ final class db_operations{
 								$stmt = $pdo->prepare($sql);
 								$stmt->execute();
 								while($obj = $stmt->fetchObject()){
-									$sl=$obj->sl;
-									$type=$obj->type;
-									$name=$obj->name;
-									$instruction_time=$obj->instruction_time;
+									$id=$obj->id;
+									$medtype=$obj->medtype;
+									$medname=$obj->medname;
+									$daytimes=$obj->daytimes;
 									$instruction=$obj->instruction;
 									$period=$obj->period;
-									$period_type=$obj->period_type;
+									$periodtype=$obj->periodtype;
 									$remark=$obj->remark;
 									
 								
 								echo"
 									<tr>
-				                       <td>$sl.</td>
-				                       <td>$type - $name </td>
-				                       <td>$instruction_time-$instruction</td>
-				                       <td>$period$period_type</td>
+				                       <td>$id.</td>
+				                       <td>$medtype - $medname </td>
+				                       <td>$daytimes-$instruction</td>
+				                       <td>$period$periodtype</td>
 				                       <td>$remark</td>
 				                   </tr>
 								";

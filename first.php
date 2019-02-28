@@ -1,36 +1,98 @@
-</div>
-</div>
-<div class="clearfix"></div>
-<footer>
-    <div class="container-fluid">
-        <i>developed by bits</i>
-        <p class="copyright">&copy; 2019 <a href="https://racegroupbd.com" target="_blank">Dr Hasin Mahmud</a>. All Rights Reserved.</p>
-    </div>
-</footer>
-</div>
+<!--
+//index.php
+!-->
 
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
-<script src="js/jquery.dataTables.min.js"></script>
-<script src="js/dataTables.bootstrap.min.js"></script>
+<html>  
+    <head>  
+        <title>PHP - Sending multiple forms data through jQuery Ajax</title>  
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="bootstrap.min.css" />
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    </head>  
+    <body>  
+        <div class="container">
+			<div align="right" style="margin-bottom:5px;">
+				<button type="button" name="add" id="add" class="btn btn-success btn-xs">Add</button>
+			</div>
+			<br />
+			<form method="post" id="user_form">
+				<div class="table-responsive">
+					<table class="table table-striped table-bordered" id="user_data">
+						<tr>
+                             <td><b>Type</b></td>
+                             <td><b>Medicine Name</b></td>
+                             <td><b>Day Times</b></td>
+                             <td><b>Instruction</b></td>
+                             <td><b>Period</b></td>
+                             <td><b>Period Type</b></td>
+                             <td><b>Remarks</b></td>
+                             <td><b>View</b></td>
+                             <td><b>Remove</b></td>
+                        </tr>
+					</table>
+				</div>
+				<div align="center">
+					<input type="submit" name="insert" id="insert" class="btn btn-primary" value="Insert" />
+				</div>
+			</form>
 
-<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-<script src="assets/vendor/chartist/js/chartist.min.js"></script>
-<script src="assets/scripts/klorofil-common.js"></script>
-<link href="css/jquery.datepick.css" rel="stylesheet">
-<script src="js/jquery.plugin.js"></script>
-<script src="js/jquery.datepick.js"></script>
+			<br />
+		</div>
+		<div id="user_dialog" title="Add Data">
+			<div class="form-group">
+				<label>Enter Medcine Type</label>
+				<input type="text" name="medtype" id="medtype" class="form-control" />
+				<span id="error_medtype" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label>Enter Medicine Name</label>
+				<input type="text" name="medname" id="medname" class="form-control" />
+				<span id="error_medname" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label>Enter Day Times</label>
+				<input type="text" name="daytimes" id="daytimes" class="form-control" />
+				<span id="error_daytimes" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label>Instruction</label>
+				<input type="text" name="instruction" id="instruction" class="form-control" />
+				<span id="error_instruction" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label>Period</label>
+				<input type="text" name="period" id="period" class="form-control" />
+				<span id="error_period" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label>Enter Period Type</label>
+				<input type="text" name="periodtype" id="periodtype" class="form-control" />
+				<span id="error_periodtype" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label>Remark</label>
+				<input type="text" name="remark" id="remark" class="form-control" />
+				<span id="error_remark" class="text-danger"></span>
+			</div>
 
-<script src="js/jquery.customSelect.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#from_date').datepick();
-        $('#to_date').datepick();
-        /*	$('#inlineDatepicker').datepick({onSelect: showDate});*/
-		
-		
-		//start
+			<div class="form-group" align="center">
+				<input type="hidden" name="row_id" id="hidden_row_id" />
+				<button type="button" name="save" id="save" class="btn btn-info">Save</button>
+			</div>
+		</div>
+		<div id="action_alert" title="Action">
+
+		</div>
+    </body>  
+</html>  
+
+
+
+
+<script>  
+$(document).ready(function(){ 
+	
 	var count = 0;
 
 	$('#user_dialog').dialog({
@@ -280,22 +342,5 @@
 		}
 	});
 	
-		
-		//end
-		
-		
-    });
-    function printDiv(divName) {
-     var printContents = document.getElementById(divName).innerHTML;
-     var originalContents = document.body.innerHTML;
-
-     document.body.innerHTML = printContents;
-
-     window.print();
-
-     document.body.innerHTML = originalContents;
-}
-
-
-
+});  
 </script>
