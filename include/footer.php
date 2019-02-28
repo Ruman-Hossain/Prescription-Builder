@@ -275,7 +275,7 @@
 		}
 		else
 		{
-			$('#action_alert').html('<p>Please Add atleast one data</p>');
+			$('#action_alert').html('<p>Please Fill All the Input Fields</p>');
 			$('#action_alert').dialog('open');
 		}
 	});
