@@ -260,24 +260,14 @@
 		
 		//Patient info and test input given or not used variables
 		
-		var patientName = $('input[name=patientName]').val();
-		var phone = $('input[name=phone]').val();
-		var sex = $('input[name=sex]').val();
-		var age = $('input[name=age]').val();
-		var agetype = $('input[name=agetype]').val();
-		var nextappointment = $('input[name=nextappointment]').val();
-		
-		var c_c= $('input[name=c_c]').val();
-		var o_e= $('input[name=o_e]').val();
-		var adv= $('input[name=adv]').val();
-		
-		
+
+
 		//Patient info and test input given or not ended
 		
 		$('.medtype').each(function(){
 			count_data = count_data + 1;
 		});
-		if(count_data > 0 && patientName && phone && age && nextappointment)
+		if(count_data > 0)
 		{
 			var form_data = $(this).serialize();
 			$.ajax({
@@ -287,32 +277,24 @@
 				success:function(data)
 				{
 					$('#user_data').find("tr:gt(0)").remove();
-					$('#action_alert').html('<p>Data Inserted Successfully</p>');
+					$('#action_alert').html('<p style="color:green;">Data Inserted Successfully</p>');
 					$('#action_alert').dialog('open');
 				}
 			})
 		}
 		else
 		{
-			$('#action_alert').html('<p>Please Fill Out All the Input Fields</p>');
+			$('#action_alert').html('<p style="color:red;">Medicine Name Must Have to be listed!!</p>');
 			$('#action_alert').dialog('open');
 		}
+
+
 	});
-	
+	 
 		
 		//end
 		
 		
     });
-function printDiv(divName){
-     var printContents = document.getElementById(divName).innerHTML;
-     var originalContents = document.body.innerHTML;
-
-     document.body.innerHTML = printContents;
-
-     window.print();
-
-     document.body.innerHTML = originalContents;
-}
 
 </script>

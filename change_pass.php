@@ -17,17 +17,22 @@
 
 		     <div class="form-group">
             <div class="form-row">
-              
+               <div class="col-md-6">
                 <label >Current Password</label>
                 <input class="form-control" name ="old_pass" type="password" placeholder="Current Password" required>
+              </div>
            </div>
               <div class="form-row">
+                 <div class="col-md-6">
                 <label >New Password</label>
                 <input class="form-control" name="new_pass" type="password" placeholder="New Password" required >
               </div>
+              </div>
 			   <div class="form-row">
+          <div class="col-md-6">
                 <label >Confirm Password</label>
                 <input class="form-control" name="fin_pass" type="password" placeholder="Retype Password" required >
+              </div>
               </div>
             </div>
           </div>
@@ -36,7 +41,13 @@
 
 		  
 
-          <input type ="submit" name="submit" value ="change" class="btn btn-primary btn-block">
+            <div class="form-group">
+             <div class="form-row">
+               <div class="col-md-12" style="margin-left: 45%;margin-top:10%;">
+                 <input type ="submit" name="submit" value="Update" class="btn btn-primary" >
+              </div>
+             </div>
+          </div>
         </form>
 
       </div>

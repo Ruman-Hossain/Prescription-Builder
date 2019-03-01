@@ -64,9 +64,13 @@
            
             </div>
           </div>
-		  
-
-          <input type ="submit" name="submit" value="Update" class="btn btn-primary btn-block">
+          <div class="form-group">
+             <div class="form-row">
+               <div class="col-md-12" style="margin-left: 45%;margin-top:10%;">
+                 <input type ="submit" name="submit" value="Update" class="btn btn-primary" >
+              </div>
+             </div>
+          </div>
         </form>
 
       </div>

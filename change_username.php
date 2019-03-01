@@ -18,17 +18,22 @@
 
 		     <div class="form-group">
             <div class="form-row">
-              
+               <div class="col-md-6">
                 <label >Current User name</label>
                 <input class="form-control" name ="cuname" type="text" placeholder="User Name" required>
+              </div>
            </div>
               <div class="form-row">
+                 <div class="col-md-6">
                 <label >New User Name</label>
                 <input class="form-control" name="uname" type="text" placeholder="New User Name" required >
               </div>
+              </div>
 			   <div class="form-row">
+           <div class="col-md-6">
                 <label >Confirm User Name</label>
                 <input class="form-control" name="funame" type="text" placeholder="Retype User Name" required >
+              </div>
               </div>
             </div>
           </div>
@@ -37,7 +42,13 @@
 
 		  
 
-          <input type ="submit" name ="submit" value ="Change" class="btn btn-primary btn-block">
+            <div class="form-group">
+             <div class="form-row">
+               <div class="col-md-6" style="margin-left: 45%;margin-top:10%;">
+                 <input type ="submit" name="submit" value="Update" class="btn btn-primary" >
+              </div>
+             </div>
+          </div>
         </form>
 
       </div>

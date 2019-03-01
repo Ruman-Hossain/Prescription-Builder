@@ -29,15 +29,23 @@
               </div>
             </div>
 			      <div class="form-row">
+			      <div class="col-md-6">
                 <label >Company</label>
                 <input class="form-control" name="company" type="text" placeholder="Name of company" required >
+            </div>
               </div>
           </div>
 		  
 
 		   
 
-          <input type ="submit" name="submit" value ="Add" class="btn btn-primary btn-block">
+            <div class="form-group">
+             <div class="form-row">
+               <div class="col-md-6" style="margin-left: 45%;margin-top:10%;">
+                 <input type ="submit" name="submit" value="Add" class="btn btn-primary" >
+              </div>
+             </div>
+          </div>
         </form>
 
       </div>

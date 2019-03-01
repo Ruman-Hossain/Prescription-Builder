@@ -3,8 +3,7 @@
     include('include/header.php');
     error_reporting(0);
 ?>
-<!-- <center><button onclick="printDiv('printable-area')" id="print_btn" align="center" style="padding:5px 15px; font-weight:bold">Print</button></center> -->
-    <center width="794px;"><input type="button" class="btn btn-primary" onclick="printDiv('printableArea')" value="Print" /></center>
+<center><button onclick="printDiv('printableArea')" class="btn btn-primary" id="print_btn" align="center" style="padding:5px 15px; font-weight:bold">Print</button></center>
         <div id="printableArea" style="border:double;overflow:hidden;width:1200px; margin:5px;">
             <div style="width:100%;padding-left: 15px;">
                 <h2 style="width:100; text-align: center;">Popular Diagnostic Centre Rangpur</h2>
@@ -21,8 +20,8 @@
             <div style="height:55px;width:100%;margin-bottom:15px;float:left; padding-left: 5%;overflow:hidden;">
                 <?php db_operations::show_patient_info(); ?>
             </div>
-            <div style="height:25px;width:100%;margin-bottom:5px;padding-left: 5%;clear:both;float: left;border-bottom:dotted;">
-                <img src="img/prescription.png" alt="Rx" width="35px"/>
+            <div style="height:25px;width:100%;padding-left: 5%;clear:both;float: left;border-bottom:dotted;">
+                <img src="img/prescription.png" alt="Rx" width="55px"/>
             </div>
             <div style="height:717px;width:100%;margin-bottom:5px;float: left;">
                 <div style="height:723px;width:20%;clear:both; float:left;border-right:dotted; overflow: hidden;">

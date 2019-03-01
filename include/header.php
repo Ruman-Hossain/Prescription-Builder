@@ -53,7 +53,17 @@ if(!$_SESSION['id']){
     .active + .collapse {display:block!important;}
 </style>
 <script type="text/javascript">
-		function addField (argument) {
+
+		function printDiv(divName){
+		     var printContents = document.getElementById(divName).innerHTML;
+		     var originalContents = document.body.innerHTML;
+		     document.body.innerHTML = printContents;
+		     window.print();
+		     document.body.innerHTML = originalContents;
+		}
+
+		
+/*		function addField (argument) {
             var myTable = document.getElementById("medTable");
             var currentIndex = myTable.rows.length;
             var currentRow = myTable.insertRow(-1);
@@ -155,7 +165,7 @@ if(!$_SESSION['id']){
 
             currentCell = currentRow.insertCell(-1);
             currentCell.appendChild(remark);
- }
+ }*/
 
 </script>
 </head>

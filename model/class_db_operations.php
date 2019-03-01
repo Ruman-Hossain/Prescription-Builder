@@ -90,14 +90,21 @@ final class db_operations{
 					
 				}
    
-					//for storing temporary patient info
-			      public static function update_temp_patient_info($patientName,$phone,$sex,$age,$agetype,$nextappointment){
-				  Global $pdo;
-	  
-	   
-				$sql = "UPDATE  temp_patient SET name =:patientName,phone=:phone,age=:age,agetype=:agetype,sex=:sex,nextappointment=:nextappointment WHERE id =1";
+				//for storing temporary patient info
+			   public static function update_temp_patient_info($patientsl,$patientName,$phone,$sex,$age,$agetype,$nextappointment){
+
+/*                                  echo $patientsl."<br>";
+                                  echo $patientName."<br>";
+                                  echo $phone."<br>";
+                                  echo $sex."<br>";
+                                  echo $age."<br>";
+                                  echo $agetype."<br>";
+                                  echo $nextappointment."<br>";*/
+				Global $pdo;
+				$sql = "UPDATE  temp_patient SET patientsl =:patientsl, patientName =:patientName,phone=:phone,age=:age,agetype=:agetype,sex=:sex,nextappointment=:nextappointment WHERE id =1";
 			
 				$stmt = $pdo->prepare($sql);
+				$stmt->bindParam(':patientsl',$patientsl,PDO::PARAM_STR);
 				$stmt->bindParam(':patientName',$patientName,PDO::PARAM_STR);
 				$stmt->bindParam(':phone',$phone,PDO::PARAM_STR);
 				$stmt->bindParam(':age',$age,PDO::PARAM_INT);
@@ -116,7 +123,7 @@ final class db_operations{
 				$stmt = $pdo->prepare($sql);
 				$stmt->bindParam(':c_c',$c_c,PDO::PARAM_STR);
 				$stmt->bindParam(':o_e',$o_e,PDO::PARAM_STR);
-				$stmt->bindParam(':adv',$adv,PDO::PARAM_INT);
+				$stmt->bindParam(':adv',$adv,PDO::PARAM_STR);
 				$stmt->execute();
 	   
    }
@@ -216,12 +223,13 @@ final class db_operations{
 								$stmt = $pdo->prepare($sql);
 								$stmt->execute();
 								while($obj = $stmt->fetchObject()){
-								$id = $obj->id;
-								$name = $obj->name;
+								$patientsl = $obj->patientsl;
+								$name = $obj->patientName;
 								$age= $obj->age;
 								$agetype= $obj->agetype;
 								$sex= $obj->sex;
 								$phone= $obj->phone;
+								$nextappointment= $obj->nextappointment;
 								}
 								
 											    echo"
@@ -234,7 +242,7 @@ final class db_operations{
                                                     <tr style='width:794px;'>
                                                         <td colspan='3'>phone : $phone </td>
 														<td colspan='2'> Date : $date</td>
-														<td colspan='2'> Patient ID : $id</td>
+														<td colspan='2'> Patient ID : $patientsl</td>
                                                         <td></td>
                                                     </tr>
                                                 </table>
@@ -276,7 +284,7 @@ final class db_operations{
 								while($obj = $stmt->fetchObject()){
 								
 								$cc =$obj->c_c;}
-								echo"<pre style='border:none'>$cc</pre>";
+								echo"$cc";
 								
 								
 							}
@@ -288,7 +296,7 @@ final class db_operations{
 								while($obj = $stmt->fetchObject()){
 								
 								$oe =$obj->o_e;}
-								echo"<pre style='border:none'>$oe</pre>";
+								echo"$oe";
 								
 								
 							}
@@ -300,7 +308,7 @@ final class db_operations{
 								while($obj = $stmt->fetchObject()){
 								
 								$adv =$obj->adv;}
-								echo"<pre style='border:none'>$adv</pre>";
+								echo"$adv";
 								
 								
 							}
@@ -309,10 +317,10 @@ final class db_operations{
 								$sql = " select next_appointment from temp_patient where id = 1";
 								$stmt = $pdo->prepare($sql);
 								$stmt->execute();
-								while($obj = $stmt->fetchObject()){
+								$obj = $stmt->fetchObject();
 								
-								$date =$obj->next_appointment;}
-								echo"$date";
+								$date =$obj->next_appointment;
+								echo $date;
 							}
 							public static function show_temp_info(){
 											Global $pdo;	

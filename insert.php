@@ -1,8 +1,10 @@
 <?php
 require('connect.php');
+$qr="TRUNCATE TABLE temp_medicine";
+$st = $pdo->prepare($qr);
+$st->execute();
 
-$sql ="INSERT INTO temp_medicine (medtype,medname,daytimes,instruction,period,periodtype,remark) 
-							VALUES (:medtype,:medname,:daytimes,:instruction,:period,:periodtype,:remark)";
+$sql ="INSERT INTO temp_medicine (medtype,medname,daytimes,instruction,period,periodtype,remark) VALUES (:medtype,:medname,:daytimes,:instruction,:period,:periodtype,:remark)";
 
 for($count = 0; $count<count($_POST['hidden_medtype']); $count++)
 {
