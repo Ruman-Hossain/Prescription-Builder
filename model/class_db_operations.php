@@ -1,7 +1,5 @@
 <?php
-require('connect.php');
-
-
+require_once("model/connect.php");
 final class db_operations{
 	
 	
@@ -229,7 +227,8 @@ final class db_operations{
 								$agetype= $obj->agetype;
 								$sex= $obj->sex;
 								$phone= $obj->phone;
-								$nextappointment= $obj->nextappointment;
+								$now = new DateTime();
+								$date = $now->format('d/m/Y  H:i A');
 								}
 								
 											    echo"
@@ -314,13 +313,14 @@ final class db_operations{
 							}
 							public static function show_appointment_date(){
 								Global $pdo;	
-								$sql = " select next_appointment from temp_patient where id = 1";
+								$sql = "select nextappointment from temp_patient where id = 1";
 								$stmt = $pdo->prepare($sql);
 								$stmt->execute();
 								$obj = $stmt->fetchObject();
-								
-								$date =$obj->next_appointment;
-								echo $date;
+								$date =$obj->nextappointment;
+								$dateTime = new DateTime($date, new DateTimeZone('Asia/Kolkata')); 
+								echo $dateTime->format("d/m/y  H:i A"); 
+
 							}
 							public static function show_temp_info(){
 											Global $pdo;	

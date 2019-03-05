@@ -53,11 +53,11 @@
                 </div>
             </div>
             <div style="height:50px;width:100%;clear:both;border-top:dotted;">
-                <div style="height:50px;float:left;padding-left: 15%;">Next Appointment Date :
+                <div style="height:50px;width:60%;float:left;padding-left: 5%;">Next Appointment Date :
                     <?php db_operations::show_appointment_date(); ?>
                 </div>
-               <div style="height:50px;float:right;">Signature :
-                    <?php db_operations::show_appointment_date(); ?>
+               <div style="height:50px;width:35%float:left;text-align: left;">Signature :
+                    
                 </div>
             </div>
         </div>

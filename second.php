@@ -125,7 +125,7 @@ require_once('include/header.php');
                             </div>
                         </div>
                         <div class="panel-body">
-							<div class="input-group" style="display:block;box-shadow:none; margin-bottom:10px;">
+                            <div class="input-group" style="display:block;box-shadow:none; margin-bottom:10px;">
                                 <span class="" style="margin:10px; text-align: center; float:left;"><b>Next Appointment Date</b></span>
                                 <input type="datetime-local" style="margin:0;width:30%; float:left;" name="nextappointment" id="nextappointment">
                             </div>
@@ -149,9 +149,9 @@ require_once('include/header.php');
                                         </tr>
                                     </table>
                                 </div>
-								<div align="center">
-									<input type="submit" name="insert" id="insert" class="btn btn-primary" value="Prescribe" />
-								</div>
+                                <div align="center">
+                                    <input type="submit" name="insert" id="insert" class="btn btn-primary" value="Prescribe" />
+                                </div>
                             </form>
 
                             <br />
@@ -203,7 +203,7 @@ require_once('include/header.php');
                 <div id="action_alert" title="Action">
 
                 </div>
-             
+
                 <!-- End Tab left inner -->
             </div>
         </div>

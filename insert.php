@@ -1,5 +1,5 @@
 <?php
-require('connect.php');
+require('model/connect.php');
 $qr="TRUNCATE TABLE temp_medicine";
 $st = $pdo->prepare($qr);
 $st->execute();

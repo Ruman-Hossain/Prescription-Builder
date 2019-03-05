@@ -1,5 +1,5 @@
 <?php
-require_once('connect.php');
+require_once('model/connect.php');
 if(isset($_GET['query'])){
 	
 	$searchKey = $_GET['query'];

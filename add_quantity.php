@@ -1,7 +1,7 @@
 
      <?php
 	 
-		include("Include/header.php");
+		include("include/header.php");
 	 
 	 ?>
 
@@ -67,5 +67,5 @@
 				
 				
 	<?php
-	include("Include/footer.php");
+	include("include/footer.php");
 	?>

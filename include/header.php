@@ -7,7 +7,7 @@ error_reporting(0);
 <?php
 if(!$_SESSION['id']){
 	
-	header("Location:/prescription/index.php");
+	header("Location:index.php");
 }
 ?>
 
@@ -63,7 +63,7 @@ if(!$_SESSION['id']){
 		}
 
 		
-/*		function addField (argument) {
+		/*function addField (argument) {
             var myTable = document.getElementById("medTable");
             var currentIndex = myTable.rows.length;
             var currentRow = myTable.insertRow(-1);
@@ -226,7 +226,7 @@ if(!$_SESSION['id']){
 		                      </a>
 		                  </li> -->
 						  <li >
-		                      <a  <?php if(isset($_GET['active']) && ($_GET['active'] == 'temp')){ echo 'class="active"';} ?> href="temp.php?active=temp">
+		                      <a  <?php if(isset($_GET['active']) && ($_GET['active'] == 'prescribe')){ echo 'class="active"';} ?> href="prescribe.php?active=prescribe">
 		                         <i class="fa fa-medkit"></i>
 		                          <!--<i class="fa fa-id-card-o" aria-hidden="true"></i>-->
 		                          <span>Make Prescription</span>

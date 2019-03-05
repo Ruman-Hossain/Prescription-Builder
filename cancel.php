@@ -3,11 +3,11 @@
 
 	if($_SESSION['id']==1){
 		
-		header("location:/prescription/prescribe.php");
+		header("location:prescribe.php");
 		
 	}
 	else{
-		header("location:/prescription/index.php");
+		header("location:index.php");
 	}
 
 
